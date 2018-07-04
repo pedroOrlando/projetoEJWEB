@@ -39,18 +39,19 @@ body {
 	border: 2px solid Blue;
 	border-radius: 10px;
 	padding: 10px;
+	background-color: white;
 }
 
 /*Valor falado pelo jogador 1*/
 #valorFalado1{
 	bottom: 400px;
-	left: 500px;
+	left: 400px;
 }
 
 /*Valor falado pelo jogador 2*/
 #valorFalado2{
 	bottom: 400px;
-	left: 700px;
+	left: 600px;
 }
 
  

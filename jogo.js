@@ -1,4 +1,4 @@
-//init
+//variaveis
 var fullDeck;
 var halfDeck1;
 var halfDeck2;
@@ -9,8 +9,12 @@ var p2;
 var placarPlayer1;
 var placarPlayer20;
 var winningScore;
+var id;
+var pauser;
 
+//inicializador
 function init(){
+//valores
 fullDeck = ["AC", "2C", "3C", "4C", "5C", "6C", "7C", "8C", "9C", "10C", "JC", "QC", "KC", "AE", "2E", "3E", "4E", "5E", "6E", "7E", "8E", "9E", "10E", "JE", "QE", "KE", "AO", "2O", "3O", "4O", "5O", "6O", "7O", "8O", "9O", "10O", "JO", "QO", "KO", "AP", "2P", "3P", "4P", "5P", "6P", "7P", "8P", "9P", "10P", "JP", "QP", "KP"];
 halfDeck1 = [];
 halfDeck2 = [];
@@ -19,23 +23,31 @@ cardCount = 0;
 placarPlayer1 = 0;
 placarPlayer2 = 0;
 deckShuffleSplit ();
+pauser = true;
+
+//matando o interval, caso haja
+clearInterval(id);
+
+//atributos
+document.getElementById("button4").style.display="inline";
+document.getElementById("button5").style.display="none";
 document.getElementById("placar1").innerHTML=placarPlayer1+"<br>";
 document.getElementById("placar2").innerHTML=placarPlayer2;
-document.getElementById("cardPic1").src="./images/cardBack.jpg";
-document.getElementById("cardPic1").width="240";
-document.getElementById("cardPic2").src="./images/cardBack.jpg";
-document.getElementById("cardPic2").width="240";
 document.getElementById("button1").innerHTML="Virar Carta";
-document.getElementById("cardPic1").style.borderColor = "pink";
-document.getElementById("cardPic2").style.borderColor = "pink";
-document.getElementById("valorFalado1").innerHTML = "xxxx";
-document.getElementById("valorFalado2").innerHTML = "yyyy";
+document.getElementById("valorFalado1").innerHTML = '"Tá na hora do duelo!"';
+document.getElementById("valorFalado2").innerHTML = '"Fale até cansar..."';
 document.getElementById("yugi").src="./images/yugi.png";
 document.getElementById("yugi").style.height="240px";
 document.getElementById("yugi").style.width="120px";
 document.getElementById("kaiba").src="./images/kaiba.png";
 document.getElementById("kaiba").style.height="240px";
 document.getElementById("kaiba").style.width="160px";
+for (let i=0; i < document.getElementsByClassName("cartaImagem").length; i++){
+		document.getElementsByClassName("cartaImagem")[i].style.border = "40px solid pink";
+		document.getElementsByClassName("cartaImagem")[i].style.padding = "0px";
+		document.getElementsByClassName("cartaImagem")[i].style.width="240";
+		document.getElementsByClassName("cartaImagem")[i].src="./images/cardBack.jpg";
+	}
 }
 //
 
@@ -49,6 +61,7 @@ function winner(i){
 				document.getElementById("cardPic1").style.padding = "40px";
 				document.getElementById("yugi").src="./images/victory.webp";
 				document.getElementById("button1").innerHTML="Nova Partida";
+				clearInterval(id);
 				setTimeout(function(){
 					alert("VITORIA DO JOGADOR "+p1+"!!!!!");
 				}, 200)
@@ -70,11 +83,13 @@ function winner(i){
 		case 2:
 			placarPlayer2++;
 			if (placarPlayer2 == winningScore){
+				
 				document.getElementById("cardPic2").style.backgroundImage = "url('./images/cash.gif')";
 				document.getElementById("cardPic2").style.border = "1px solid black";
 				document.getElementById("cardPic2").style.padding = "40px";
 				document.getElementById("kaiba").src="./images/victory.webp";
 				document.getElementById("button1").innerHTML="Nova Partida";
+				clearInterval(id);
 				setTimeout(function(){
 					alert("VITORIA DO JOGADOR "+p2+"!!!!!");
 				}, 200)
@@ -113,6 +128,7 @@ function deckShuffleSplit (){
 }
 
 function cardTurnOver() {
+	
 	if((placarPlayer1 < winningScore) && (placarPlayer2 < winningScore)){
 		if (cardCount < 52){
 			if(flipper){
@@ -431,8 +447,8 @@ function defaultValues(){
 	document.getElementById("button1").innerHTML="Virar Carta";
 	document.getElementById("cardPic1").style.borderColor = "pink";
 	document.getElementById("cardPic2").style.borderColor = "pink";
-	document.getElementById("valorFalado1").innerHTML = "xxxx";
-	document.getElementById("valorFalado2").innerHTML = "yyyy";
+	document.getElementById("valorFalado1").innerHTML = '"Tá na hora do duelo!"';
+	document.getElementById("valorFalado2").innerHTML = '"Fale até cansar..."';
 	document.getElementById("yugi").src="./images/yugi.png";
 	document.getElementById("kaiba").src="./images/kaiba.png";
 	flipper = true;
@@ -441,6 +457,7 @@ function defaultValues(){
 function resetScore(){
 	let i = window.confirm("Deseja realmente resetar os placares e nomes dos jogadores?");
 	if(i){
+		clearInterval(id);
 		placarPlayer1=0;
 		placarPlayer2=0;
 		init();
@@ -465,8 +482,20 @@ function newMatch(){
 }
 
 function auto(){
-	var id = setInterval(cardTurnOver, 500);
-	if(placarPlayer1 == winningScore ||  placarPlayer2 === winningScore){
+	id = setInterval(cardTurnOver, 500);
+	document.getElementById("button4").style.display="none";
+	document.getElementById("button5").style.display="inline";
+}
+
+function pausar(){
+	if (pauser){
 		clearInterval(id);
+		document.getElementById("button4").style.display="none";
+		document.getElementById("button5").innerHTML="Continuar";
+		pauser = false;
+	}else{
+		document.getElementById("button5").innerHTML="Pausar";
+		auto();
+		pauser = true;
 	}
 }
