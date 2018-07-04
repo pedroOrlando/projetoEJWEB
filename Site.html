@@ -3,15 +3,13 @@
 	<script src="jogo.js"></script>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<meta charset="UTF-8">
-	<script>
-		init();
-	</script>
 </head>
 <body>
 <p><BR></p>
 <button class="button" id="button1" onclick='cardTurnOver()'>Virar Carta<br></button>
 <button class="button" id="button2" onclick='editName()'>Nomear Jogadores<br></button>
 <button class="button" id="button3" onclick='resetScore()'>Reiniciar<br></button>
+<button class="button" id="button4" onclick='auto()'>Auto<br></button>
 	<div>
 		<img class="cartaImagem" id="cardPic1" src="./images/cardBack.jpg">
 		<img class="cartaImagem" id="cardPic2" src="./images/cardBack.jpg">
@@ -28,10 +26,13 @@
 		<h2 class="p2" id="player2" style="display: inline">Player 2</h2> <h2 style="display:inline">:</h2> <span id="placar2">0</span>
 	</div>
 	<script>
+	init();
 	setTimeout(function(){
 				editName();
-			}, 200)
-		
+			}, 200);
+	setTimeout(function(){
+				setPontuação();
+			}, 201);
 	</script>
 	
 </body>
