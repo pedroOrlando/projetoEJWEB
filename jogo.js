@@ -48,11 +48,12 @@ document.getElementById("kaiba").src="./images/kaiba.png";
 document.getElementById("kaiba").style.height="240px";
 document.getElementById("kaiba").style.width="160px";
 
+
 document.getElementById("pergunta").style.display="block";
 document.getElementById("button6").style.display="inline"; 
-document.getElementById("button6").innerHTML = p1;
+document.getElementById("button6").innerHTML = "Player 1: "+p1;
 document.getElementById("button7").style.display="inline"; 
-document.getElementById("button7").innerHTML = p2;
+document.getElementById("button7").innerHTML = "Player 2: "+p2;
 
 
 for (let i=0; i < document.getElementsByClassName("cartaImagem").length; i++){
@@ -549,7 +550,7 @@ function pausar(){
 		document.getElementById("button1").style.display="inline";
 		pauser = false;
 	}else{
-		document.getElementById("button5").innerHTML="Pausar";
+		document.getElementById("button5").innerHTML="Pause";
 		auto();
 		pauser = true;
 	}
