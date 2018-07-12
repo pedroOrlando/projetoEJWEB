@@ -7,15 +7,15 @@
 <body>
 <p><BR></p>
 	<div>
-	<button class="button" id="button1" onclick='cardTurnOver()'>Virar Carta<br></button>
-	<button class="button" id="button2" onclick='editName()'>Nomear Jogadores<br></button>
-	<button class="button" id="button3" onclick='resetScore()'>Reiniciar<br></button>
-	<button class="button" id="button4" onclick='auto()'>Auto<br></button>
+	<button class="button" id="button1" onclick='cardTurnOver()' style='display: none'>Virar Carta<br></button>
+	<button class="button" id="button2" onclick='editName()' style='display: none'>Nomear Jogadores<br></button>
+	<button class="button" id="button3" onclick='resetScore()' style='display: none'>Reiniciar<br></button>
+	<button class="button" id="button4" onclick='auto()' style='display: none'>Auto<br></button>
 	<button class="button" id="button5" onclick='pausar()' style='display: none'>Pausar<br></button>
 
-	<!-- teste <h3 id='pergunta'> Qual jogador começará a partida? </h3>
-	<button class="button" id="button6" onclick='flipperSwitch(); document.getElementById("button6").style.display="none"; document.getElementById("button7").style.display="none"; document.getElementById("pergunta").style.display="none"; '>Player 1<br></button>
-	<button class="button" id="button7" onclick='document.getElementById("button6").style.display="none"; document.getElementById("button7").style.display="none"; document.getElementById("pergunta").style.display="none";' >Player 2<br></button> -->
+	<h3 id='pergunta'> Qual jogador começará a partida? </h3>
+	<button class="button" id="button6" onclick='flipperSwitch(); choosenStarter(); '>Player 1<br></button>
+	<button class="button" id="button7"onclick= 'choosenStarter()' >Player 2<br></button>
 	</div>
 
 

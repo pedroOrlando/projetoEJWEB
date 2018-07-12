@@ -31,7 +31,10 @@ pauser = true;
 clearInterval(id);
 
 //atributos
-document.getElementById("button4").style.display="inline";
+document.getElementById("button1").style.display="none";
+document.getElementById("button2").style.display="none";
+document.getElementById("button3").style.display="none";
+document.getElementById("button4").style.display="none";
 document.getElementById("button5").style.display="none";
 document.getElementById("placar1").innerHTML=placarPlayer1+"<br>";
 document.getElementById("placar2").innerHTML=placarPlayer2;
@@ -45,9 +48,11 @@ document.getElementById("kaiba").src="./images/kaiba.png";
 document.getElementById("kaiba").style.height="240px";
 document.getElementById("kaiba").style.width="160px";
 
-/*document.getElementById("pergunta").style.display="block";
+document.getElementById("pergunta").style.display="block";
 document.getElementById("button6").style.display="inline"; 
-document.getElementById("button7").style.display="inline"; */
+document.getElementById("button6").innerHTML = p1;
+document.getElementById("button7").style.display="inline"; 
+document.getElementById("button7").innerHTML = p2;
 
 
 for (let i=0; i < document.getElementsByClassName("cartaImagem").length; i++){
@@ -60,7 +65,15 @@ for (let i=0; i < document.getElementsByClassName("cartaImagem").length; i++){
 //
 
 function choosenStarter(){
-	
+	document.getElementById("button1").style.display="inline";
+	document.getElementById("button2").style.display="inline";
+	document.getElementById("button3").style.display="inline";
+	document.getElementById("button4").style.display="inline";
+	document.getElementById("button5").style.display="none";
+	//
+	document.getElementById("button6").style.display="none"; 
+	document.getElementById("button7").style.display="none"; 
+	document.getElementById("pergunta").style.display="none";
 }
 
 function winner(i){
@@ -523,6 +536,7 @@ function newMatch(){
 
 function auto(){
 	id = setInterval(cardTurnOver, 500);
+	document.getElementById("button1").style.display="none";
 	document.getElementById("button4").style.display="none";
 	document.getElementById("button5").style.display="inline";
 }
@@ -531,7 +545,8 @@ function pausar(){
 	if (pauser){
 		clearInterval(id);
 		document.getElementById("button4").style.display="none";
-		document.getElementById("button5").innerHTML="Continuar";
+		document.getElementById("button5").innerHTML="Auto";
+		document.getElementById("button1").style.display="inline";
 		pauser = false;
 	}else{
 		document.getElementById("button5").innerHTML="Pausar";
