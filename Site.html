@@ -6,11 +6,18 @@
 </head>
 <body>
 <p><BR></p>
-<button class="button" id="button1" onclick='cardTurnOver()'>Virar Carta<br></button>
-<button class="button" id="button2" onclick='editName()'>Nomear Jogadores<br></button>
-<button class="button" id="button3" onclick='resetScore()'>Reiniciar<br></button>
-<button class="button" id="button4" onclick='auto()'>Auto<br></button>
-<button class="button" id="button5" onclick='pausar()' style='display: none'>Pausar<br></button>
+	<div>
+	<button class="button" id="button1" onclick='cardTurnOver()'>Virar Carta<br></button>
+	<button class="button" id="button2" onclick='editName()'>Nomear Jogadores<br></button>
+	<button class="button" id="button3" onclick='resetScore()'>Reiniciar<br></button>
+	<button class="button" id="button4" onclick='auto()'>Auto<br></button>
+	<button class="button" id="button5" onclick='pausar()' style='display: none'>Pausar<br></button>
+
+	<!-- teste <h3 id='pergunta'> Qual jogador começará a partida? </h3>
+	<button class="button" id="button6" onclick='flipperSwitch(); document.getElementById("button6").style.display="none"; document.getElementById("button7").style.display="none"; document.getElementById("pergunta").style.display="none"; '>Player 1<br></button>
+	<button class="button" id="button7" onclick='document.getElementById("button6").style.display="none"; document.getElementById("button7").style.display="none"; document.getElementById("pergunta").style.display="none";' >Player 2<br></button> -->
+	</div>
+
 
 	<div>
 		<img class="cartaImagem" id="cardPic1" src="./images/cardBack.jpg">
@@ -28,13 +35,10 @@
 		<h2 class="p2" id="player2" style="display: inline">Player 2</h2> <h2 style="display:inline">:</h2> <span id="placar2">0</span>
 	</div>
 	<script>
-	init();
+	
 	setTimeout(function(){
-				editName();
+				init();
 			}, 200);
-	setTimeout(function(){
-				setPontuação();
-			}, 201);
 	</script>
 	
 </body>
