@@ -31,6 +31,7 @@ pauser = true;
 clearInterval(id);
 
 //atributos
+document.getElementById("button0").style.display="none";
 document.getElementById("button1").style.display="none";
 document.getElementById("button2").style.display="none";
 document.getElementById("button3").style.display="none";
@@ -66,15 +67,17 @@ for (let i=0; i < document.getElementsByClassName("cartaImagem").length; i++){
 //
 
 function choosenStarter(){
+	document.getElementById("button0").style.display="inline";
 	document.getElementById("button1").style.display="inline";
 	document.getElementById("button2").style.display="inline";
 	document.getElementById("button3").style.display="inline";
 	document.getElementById("button4").style.display="inline";
-	document.getElementById("button5").style.display="none";
+	document.getElementById("button5").style.display="none"; 
 	//
 	document.getElementById("button6").style.display="none"; 
 	document.getElementById("button7").style.display="none"; 
 	document.getElementById("pergunta").style.display="none";
+	document.getElementById("botoes").style.display="block";
 }
 
 function winner(i){
@@ -479,6 +482,8 @@ function spokenCards(i) {
 	
 } 
 
+// criar função pra conferir nome null
+
 function editName(){
 	p1=prompt("Nome do Jogador 1: ");
 	for (let i=0; i < document.getElementsByClassName("p1").length; i++){
@@ -537,7 +542,7 @@ function newMatch(){
 
 function auto(){
 	id = setInterval(cardTurnOver, 500);
-	document.getElementById("button1").style.display="none";
+	document.getElementById("button1").disabled = true; //disable
 	document.getElementById("button4").style.display="none";
 	document.getElementById("button5").style.display="inline";
 }
@@ -546,11 +551,11 @@ function pausar(){
 	if (pauser){
 		clearInterval(id);
 		document.getElementById("button4").style.display="none";
-		document.getElementById("button5").innerHTML="Auto";
-		document.getElementById("button1").style.display="inline";
+		document.getElementById("button5").innerHTML='<span class="glyphicon glyphicon-play" aria-hidden="true"></span>Auto';
+		document.getElementById("button1").disabled = false; //enable
 		pauser = false;
 	}else{
-		document.getElementById("button5").innerHTML="Pause";
+		document.getElementById("button5").innerHTML='<span class="glyphicon glyphicon-pause" aria-hidden="true"></span>Pause';
 		auto();
 		pauser = true;
 	}

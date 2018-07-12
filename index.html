@@ -2,44 +2,111 @@
 <head>
 	<script src="jogo.js"></script>
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
 	<meta charset="UTF-8">
 </head>
 <body>
-<p><BR></p>
-	<div>
-	<p><a href="./regras.html" target="_blank">Regras</a></p>
-	<button class="button" id="button4" onclick='auto()' style='display: none'>Auto<br></button>
-	<button class="button" id="button5" onclick='pausar()' style='display: none'>Pause<br></button>
-	<button class="button" id="button2" onclick='editName()' style='display: none'>Nomear Jogadores<br></button>
-	<button class="button" id="button3" onclick='resetScore()' style='display: none'>Reiniciar Partida<br></button>
-	<button class="button" id="button1" onclick='cardTurnOver()' style='display: none'>Virar Carta<br></button>
 
+<div class="container" id="botoes" style="display:none">
+	<div class="row">
+		<div class="col-md-2">
+			<button class="btn btn-default" id="button4" onclick='auto()' style='display: none'><span class="glyphicon glyphicon-play" aria-hidden="true"></span>Auto<br></button>
+			<button class="btn btn-default" id="button5" onclick='pausar()' style='display: none'><span class="glyphicon glyphicon-pause" aria-hidden="true">Pause<br></button>
+		</div>
+		
+		<div class="col-md-2">
+			<button class="btn btn-default" id="button2" onclick='editName()' style='display: none'>Nomear Jogadores<br></button>
+		</div>
+		
+		<div class="col-md-2">
+			<button class="btn btn-default" id="button3" onclick='resetScore()' style='display: none'>Reiniciar Partida<br></button>
+		</div>
+		
+		<div class="col-md-2">
+			<button class="btn btn-default" id="button1" onclick='cardTurnOver()' style='display: none'>Virar Carta<br></button>
+		</div>
+		
+		<div class="col-md-2">
+			<button class="btn btn-default" id="button0" style='display: none'><a href="./regras.html" target="_blank">Regras</a></button>
+		</div>
+		<div class="col-md-2"></div>
+	</div>
+ </div>
+
+
+<div>
 	<h3 id='pergunta'> Qual jogador começará a partida? </h3>
-	<button class="button" id="button6" onclick='flipperSwitch(); choosenStarter(); '>Player 1<br></button>
-	<button class="button" id="button7"onclick= 'choosenStarter()' >Player 2<br></button>
-	</div>
+	<button class="btn btn-primary" id="button6" onclick='flipperSwitch(); choosenStarter(); '>Player 1<br></button>
+	<button class="btn btn-primary" id="button7"onclick= 'choosenStarter()' >Player 2<br></button>
+</div>
 
+ 
+<div class="container" id="cartas">
+	<div class="row">
+		<div class="col-md-3" id="cartaum">
+			<img class="cartaImagem" id="cardPic1" src="./images/cardBack.jpg">
+		</div>
+		
+		<div class="col-md-3" id="imgemYugi">
+			<div class="row">
+				<h1 class="jogadores p1" id="jogador1">Yugi</h1> 
+			</div>
+			<div class="row">
+				<span class="valorFalado" id="valorFalado1" style="display: inline-block">"Tá na hora do duelo!"</span>
+			</div>
+			
+			<div class="row" id="yugiavatar">
+				<img class="imagemChar" id ="yugi" src="./images/yugi.png">
+			</div>
+			
+		</div>
+		
+		
+		<div class="col-md-3" id="cartadois">
+			<img class="cartaImagem" id="cardPic2" src="./images/cardBack.jpg">
+		</div>
+		
+	<div class="col-md-3" id="imagemKaiba">
+		<div class="row">
+			<h1 class="jogadores p2" id="jogador2">Kaiba</h1>
+		</div>
+		<div class="row">
+			<span class="valorFalado" id="valorFalado2" style="display: inline-block">"Fale até cansar..."</span>
+		</div>
+			
+		<div class="row" id="kaibaavatar">
+			<img class="imagemChar" id ="kaiba" src="./images/kaiba.png">
+		</div>
+		
+	</div>	
+	
+</div>	
 
-	<div>
-		<img class="cartaImagem" id="cardPic1" src="./images/cardBack.jpg">
-		<img class="cartaImagem" id="cardPic2" src="./images/cardBack.jpg">
-		<img class="imagemChar" id ="yugi" src="./images/yugi.png">
-		<img class="imagemChar" id ="kaiba" src="./images/kaiba.png">
-		<h1 class="jogadores p1" id="jogador1">Yugi</h1> 
-		<h1 class="jogadores p2" id="jogador2">Kaiba</h1>
-		<span class="valorFalado" id="valorFalado1" style="display: inline-block">xxxx</span>
-		<span class="valorFalado" id="valorFalado2" style="display: inline-block">yyyy</span>
-	</div>
-	<div id="placar">
-	<h1>Placar</h1>
-		<h2 class="p1" id="player1" style="display: inline">Player 1</h2> <h2 style="display:inline">:</h2> <span id="placar1">0<br></span>
-		<h2 class="p2" id="player2" style="display: inline">Player 2</h2> <h2 style="display:inline">:</h2> <span id="placar2">0</span>
-	</div>
-	<script>
+<div class="container" id="placar">
+	<div class="row">
+		<div class="col-md-3">
+			<h2>Placar</h2>
+		</div>
+		<div class="col-md-3">
+		<BR>
+			<span class="glyphicon glyphicon-user" aria-hidden="true"></span> 
+			<h2 class="p1" id="player1" style="display: inline">Player 1</h2> <h2 style="display:inline">:</h2> <span id="placar1">0<br></span>
+		</div>
+		<div class="col-md-3">
+			
+		</div>
+		<div class="col-md-3">
+		<BR>
+			<span class="glyphicon glyphicon-user" aria-hidden="true"></span> 
+			<h2 class="p2" id="player2" style="display: inline">Player 2</h2> <h2 style="display:inline">:</h2> <span id="placar2">0</span>
+		</div>
+</div>
+
+<script>
 	
 	setTimeout(function(){
 				init();
 			}, 200);
-	</script>
+</script>
 	
 </body>

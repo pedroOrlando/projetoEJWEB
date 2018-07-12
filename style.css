@@ -2,15 +2,17 @@ body {
     background-color: lightBlue;
 }
 
-
-/*botões*/
-.button{
-	margin-right: 10px;
-	margin-left: 10px;
-	margin-bottom: 5px;
-	border: 1px solid black;
+div{
+	//border: 1px solid red;
 }
 
+#placar1{
+	font-size:28px;
+}
+
+#placar2{
+	font-size:28px;
+}
 
 
 /*Imagem das cartas*/
@@ -22,20 +24,20 @@ body {
  
  /*Imagem dos avatares*/
 .imagemChar{
-	position:relative;
+//position: relative;
 }
 
 /*Nomes dos Jogadores*/
 .jogadores{
 	font-weight:bold; 
 	font-size:30px; 
-	position:relative;
+	//position:relative;
 }
 
 /*Valores falados pelos jogadores*/
 
 .valorFalado{
-	position:relative;
+	//position:relative;
 	border: 2px solid Blue;
 	border-radius: 10px;
 	padding: 10px;
@@ -59,8 +61,8 @@ body {
 #yugi{
 	height:240px;
 	width:120px;
-	bottom:0px; 
-	right:290px;
+	top:20px; 
+	//right:290px;
 }
 
 /*Avatar jogador 2*/
@@ -69,6 +71,21 @@ body {
 	width:160px;
 	left:0px;
 	top:10px;
+}
+#imgemYugi{
+	//padding-top: 100px;
+}
+
+#yugiavatar{
+	padding-top: 35px;
+}
+
+#kaibaavatar{
+	padding-top: 35px;
+}
+
+#imagemKaiba {
+	//padding-top: 100px;
 }
 
 /*Nome jogador 1*/
@@ -83,15 +100,22 @@ body {
 }
 
 /*Imagem da carta 2*/
-#cardPic2{
-	position:relative; 
-	left:620px
+#cartaum{
+	padding-top:27px;
+}
+
+#cartadois{
+	padding-top:27px;
 }
 
 /*Placar*/
 #placar{
 	border: 5px solid;
 	padding-left: 10px;
-	position: relative;
+	//position: relative;
 	bottom: 80px;
+}
+
+#botoes{
+	padding:30px;
 }
