@@ -22,16 +22,13 @@ div{
 	border: 40px solid rgba(165, 42, 42, 0.7);
 }
  
- /*Imagem dos avatares*/
-.imagemChar{
-//position: relative;
-}
+
 
 /*Nomes dos Jogadores*/
 .jogadores{
 	font-weight:bold; 
 	font-size:30px; 
-	//position:relative;
+	padding-left: 10px;
 }
 
 /*Valores falados pelos jogadores*/
@@ -51,7 +48,6 @@ div{
 	height:240px;
 	width:120px;
 	top:20px; 
-	//right:290px;
 }
 
 /*Avatar jogador 2*/

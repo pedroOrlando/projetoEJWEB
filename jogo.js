@@ -16,36 +16,30 @@ var pauser;
 function init(){
 //valores
 fullDeck = ["AC", "2C", "3C", "4C", "5C", "6C", "7C", "8C", "9C", "10C", "JC", "QC", "KC", "AE", "2E", "3E", "4E", "5E", "6E", "7E", "8E", "9E", "10E", "JE", "QE", "KE", "AO", "2O", "3O", "4O", "5O", "6O", "7O", "8O", "9O", "10O", "JO", "QO", "KO", "AP", "2P", "3P", "4P", "5P", "6P", "7P", "8P", "9P", "10P", "JP", "QP", "KP"];
-halfDeck1 = [];
-halfDeck2 = [];
+placarPlayer1 = 0;
+placarPlayer2 = 0;
+defaultValues();
 editName();
 setPontuação();
 flipper=false;
-cardCount = 0;
-placarPlayer1 = 0;
-placarPlayer2 = 0;
-deckShuffleSplit ();
 pauser = true;
-
+document.getElementById("button4").disabled = false;
+document.getElementById("button5").disabled = false;
 //matando o interval, caso haja
 clearInterval(id);
 
 //atributos
 document.getElementById("botoes").style.display="none";
-document.getElementById("placar1").innerHTML=placarPlayer1+"<br>";
-document.getElementById("placar2").innerHTML=placarPlayer2;
-document.getElementById("button1").innerHTML='<span class="glyphicon glyphicon-retweet" aria-hidden="true"></span> Virar Carta';
 document.getElementById("valorFalado1").innerHTML = '"Tá na hora do duelo!"';
 document.getElementById("valorFalado2").innerHTML = '"Fale até cansar..."';
-document.getElementById("yugi").src="./images/yugi.png";
 document.getElementById("yugi").style.height="240px";
 document.getElementById("yugi").style.width="120px";
-document.getElementById("kaiba").src="./images/kaiba.png";
 document.getElementById("kaiba").style.height="240px";
 document.getElementById("kaiba").style.width="160px";
 
 
 document.getElementById("pergunta").style.display="block";
+document.getElementById("iniciar").style.display="none";
 document.getElementById("button6").style.display="inline"; 
 document.getElementById("button6").innerHTML = "Player 1: "+p1;
 document.getElementById("button7").style.display="inline"; 
@@ -56,10 +50,52 @@ for (let i=0; i < document.getElementsByClassName("cartaImagem").length; i++){
 		document.getElementsByClassName("cartaImagem")[i].style.border = "40px solid rgba(165, 42, 42, 0.7)";
 		document.getElementsByClassName("cartaImagem")[i].style.padding = "0px";
 		document.getElementsByClassName("cartaImagem")[i].style.width="240";
-		document.getElementsByClassName("cartaImagem")[i].src="./images/cardBack.jpg";
+		document.getElementsByClassName("cartaImagem")[i].src="images/cardBack.jpg";
 	}
 }
 //
+
+function initSemNome(){
+
+//valores
+fullDeck = ["AC", "2C", "3C", "4C", "5C", "6C", "7C", "8C", "9C", "10C", "JC", "QC", "KC", "AE", "2E", "3E", "4E", "5E", "6E", "7E", "8E", "9E", "10E", "JE", "QE", "KE", "AO", "2O", "3O", "4O", "5O", "6O", "7O", "8O", "9O", "10O", "JO", "QO", "KO", "AP", "2P", "3P", "4P", "5P", "6P", "7P", "8P", "9P", "10P", "JP", "QP", "KP"];
+placarPlayer1 = 0;
+placarPlayer2 = 0;
+defaultValues();
+setPontuação();
+flipper=false;
+pauser = true;
+document.getElementById("button4").disabled = false;
+document.getElementById("button5").disabled = false;
+//matando o interval, caso haja
+clearInterval(id);
+
+//atributos
+document.getElementById("botoes").style.display="none";
+document.getElementById("valorFalado1").innerHTML = '"Tá na hora do duelo!"';
+document.getElementById("valorFalado2").innerHTML = '"Fale até cansar..."';
+document.getElementById("yugi").style.height="240px";
+document.getElementById("yugi").style.width="120px";
+document.getElementById("kaiba").style.height="240px";
+document.getElementById("kaiba").style.width="160px";
+
+
+document.getElementById("pergunta").style.display="block";
+document.getElementById("iniciar").style.display="none";
+document.getElementById("button6").style.display="inline"; 
+document.getElementById("button6").innerHTML = "Player 1: "+p1;
+document.getElementById("button7").style.display="inline"; 
+document.getElementById("button7").innerHTML = "Player 2: "+p2;
+
+
+for (let i=0; i < document.getElementsByClassName("cartaImagem").length; i++){
+		document.getElementsByClassName("cartaImagem")[i].style.border = "40px solid rgba(165, 42, 42, 0.7)";
+		document.getElementsByClassName("cartaImagem")[i].style.padding = "0px";
+		document.getElementsByClassName("cartaImagem")[i].style.width="240";
+		document.getElementsByClassName("cartaImagem")[i].src="images/cardBack.jpg";
+	}
+
+}
 
 function choosenStarter(){
 	document.getElementById("button0").style.display="inline";
@@ -80,11 +116,15 @@ function winner(i){
 		case 1:
 			placarPlayer1++;
 			if (placarPlayer1 == winningScore){
-				document.getElementById("cardPic1").style.backgroundImage = "url('./images/cash.gif')";
+				document.getElementById("cardPic1").style.backgroundImage = "url('images/cash.gif')";
 				document.getElementById("cardPic1").style.border = "1px solid black";
 				document.getElementById("cardPic1").style.padding = "40px";
-				document.getElementById("yugi").src="./images/victory.webp";
+				document.getElementById("yugi").src="images/victory.webp";
+				document.getElementById("yugi").style.width="300px";
 				document.getElementById("button1").innerHTML='<span class="glyphicon glyphicon-retweet" aria-hidden="true"></span> Nova Partida';
+				document.getElementById("button1").disabled = false;
+				document.getElementById("button4").disabled = true;
+				document.getElementById("button5").disabled = true;
 				clearInterval(id);
 				setTimeout(function(){
 					alert("VITORIA DO JOGADOR "+p1+"!!!!!");
@@ -94,7 +134,7 @@ function winner(i){
 				document.getElementById("cardPic1").style.borderColor = "rgba(144, 238, 144, 0.7)";
 				document.getElementById("cardPic2").style.borderColor = "rgba(255, 0, 0, 0.7)";
 				document.getElementById("button1").innerHTML='<span class="glyphicon glyphicon-retweet" aria-hidden="true"></span> Reembaralhar';
-				document.getElementById("yugi").src="./images/winner"+(Math.floor(Math.random()*10)+1)+".webp";
+				document.getElementById("yugi").src="images/winner"+(Math.floor(Math.random()*10)+1)+".webp";
 				flipper = true;
 				setTimeout(function(){
 					alert("Ponto pro jogador "+p1+"!");
@@ -109,11 +149,15 @@ function winner(i){
 			placarPlayer2++;
 			if (placarPlayer2 == winningScore){
 				
-				document.getElementById("cardPic2").style.backgroundImage = "url('./images/cash.gif')";
+				document.getElementById("cardPic2").style.backgroundImage = "url('images/cash.gif')";
 				document.getElementById("cardPic2").style.border = "1px solid black";
 				document.getElementById("cardPic2").style.padding = "40px";
-				document.getElementById("kaiba").src="./images/victory.webp";
+				document.getElementById("kaiba").src="images/victory.webp";
+				document.getElementById("kaiba").style.width="300px";
 				document.getElementById("button1").innerHTML='<span class="glyphicon glyphicon-retweet" aria-hidden="true"></span> Nova Partida';
+				document.getElementById("button1").disabled = false;
+				document.getElementById("button4").disabled = true;
+				document.getElementById("button5").disabled = true;
 				clearInterval(id);
 				setTimeout(function(){
 					alert("VITORIA DO JOGADOR "+p2+"!!!!!");
@@ -123,7 +167,7 @@ function winner(i){
 				document.getElementById("cardPic2").style.borderColor = "rgba(144, 238, 144, 0.7)";
 				document.getElementById("cardPic1").style.borderColor = "rgba(255, 0, 0, 0.7)";
 				document.getElementById("button1").innerHTML='<span class="glyphicon glyphicon-retweet" aria-hidden="true"></span> Reembaralhar';
-				document.getElementById("kaiba").src="./images/winner"+(Math.floor(Math.random()*10)+1)+".webp";
+				document.getElementById("kaiba").src="images/winner"+(Math.floor(Math.random()*10)+1)+".webp";
 				flipper = false;
 				setTimeout(function(){
 					alert("Ponto pro jogador "+p2+"!");
@@ -154,23 +198,22 @@ function deckShuffleSplit (){
 }
 
 function cardTurnOver() {
-	console.log(flipper);
 	if((placarPlayer1 < winningScore) && (placarPlayer2 < winningScore)){
 		if (cardCount < 52){
 			if(flipper){
-				document.getElementById("cardPic1").src = "./images/"+halfDeck1[0]+".png";		
+				document.getElementById("cardPic1").src = "images/"+halfDeck1[0]+".png";		
 				spokenCards(cardCount);
 				halfDeck1.splice(0, 1);	
 				cardCount++;
 			}else{
-				document.getElementById("cardPic2").src = "./images/"+halfDeck2[0]+".png";		
+				document.getElementById("cardPic2").src = "images/"+halfDeck2[0]+".png";		
 				spokenCards(cardCount);
 				halfDeck2.splice(0, 1);	
 				cardCount++;
 			}
 		}else if (cardCount===52){
-			document.getElementById("cardPic1").src="./images/giphy.webp";
-			document.getElementById("cardPic2").src="./images/giphy.webp";
+			document.getElementById("cardPic1").src="images/giphy.webp";
+			document.getElementById("cardPic2").src="images/giphy.webp";
 			document.getElementById("button1").innerHTML='<span class="glyphicon glyphicon-retweet" aria-hidden="true"></span> Reembaralhar';
 			cardCount++;
 		}else if (cardCount===53){
@@ -477,61 +520,45 @@ function spokenCards(i) {
 	
 } 
 
-// criar função pra conferir nome null
-
-function editName(){
-	p1=prompt("Nome do Jogador 1: ");
-	for (let i=0; i < document.getElementsByClassName("p1").length; i++){
-		document.getElementsByClassName("p1")[i].innerHTML=p1;
-	}
-	p2=prompt("Nome do Jogador 2: ");
-	for (let i=0; i < document.getElementsByClassName("p2").length; i++){
-		document.getElementsByClassName("p2")[i].innerHTML=p2;
-	}
-	
-	document.getElementById("button2").innerHTML='<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Renomear Jogadores';
-}
-
 function defaultValues(){
 	document.getElementById("placar1").innerHTML=placarPlayer1+"<br>";
 	document.getElementById("placar2").innerHTML=placarPlayer2;
 	halfDeck1 = [];
 	halfDeck2 = [];
 	deckShuffleSplit();
-	document.getElementById("cardPic1").src="./images/cardBack.jpg";
+	document.getElementById("cardPic1").src="images/cardBack.jpg";
 	document.getElementById("cardPic1").width="240";
-	document.getElementById("cardPic2").src="./images/cardBack.jpg";
+	document.getElementById("cardPic2").src="images/cardBack.jpg";
 	document.getElementById("cardPic2").width="240";
 	cardCount=0;
 	document.getElementById("button1").innerHTML='<span class="glyphicon glyphicon-retweet" aria-hidden="true"></span> Virar Carta';
 	document.getElementById("cardPic1").style.borderColor = "rgba(165, 42, 42, 0.7)";
+	document.getElementById("cardPic1").style.backgroundImage = 'none';
 	document.getElementById("cardPic2").style.borderColor = "rgba(165, 42, 42, 0.7)";
+	document.getElementById("cardPic2").style.backgroundImage = 'none';
 	document.getElementById("valorFalado1").innerHTML = '"Tá na hora do duelo!"';
 	document.getElementById("valorFalado2").innerHTML = '"Fale até cansar..."';
-	document.getElementById("yugi").src="./images/yugi.png";
-	document.getElementById("kaiba").src="./images/kaiba.png";
+	document.getElementById("yugi").src="images/yugi.png";
+	document.getElementById("kaiba").src="images/kaiba.png";
 }
 
 function resetScore(){
-	let i = window.confirm("Deseja realmente resetar os placares e nomes dos jogadores?");
+	let i = window.confirm("Deseja reiniciar a partida?");
 	if(i){
 		clearInterval(id);
 		placarPlayer1=0;
 		placarPlayer2=0;
-		init();
+		initSemNome();
 	}
 }
 
-function setPontuação(){
-	winningScore = prompt("De quantos pontos será a partida?");
-}
-
 function newMatch(){
-	pausar();
+	clearInterval(id);
 	let i = window.confirm("Deseja iniciar uma nova partida?");
 	if(i){
 		placarPlayer1=0;
 		placarPlayer2=0;
+		document.getElementById("button1").disabled = false;
 		init();
 	}
 }
@@ -554,5 +581,73 @@ function pausar(){
 		document.getElementById("button5").innerHTML='<span class="glyphicon glyphicon-pause" aria-hidden="true"></span> Pause';
 		auto();
 		pauser = true;
+	}
+}
+
+function editName(){
+	p1=null;
+	p2=null;
+	while (!p1){
+		
+		p1=prompt("Nome do Jogador 1: ");
+		if(!p1){
+			alert("O nome não pode ser deixado em branco.");
+		}
+		for (let i=0; i < document.getElementsByClassName("p1").length; i++){
+			document.getElementsByClassName("p1")[i].innerHTML=p1;
+		}
+	}
+	
+	while (!p2){
+		p2=prompt("Nome do Jogador 2: ");
+		if(!p2){
+			alert("O nome não pode ser deixado em branco.");
+		}
+		for (let i=0; i < document.getElementsByClassName("p2").length; i++){
+			document.getElementsByClassName("p2")[i].innerHTML=p2;
+		}
+	}
+	
+	document.getElementById("button2").innerHTML='<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Renomear Jogadores';
+}
+
+function setPontuação(){
+	let i;
+	i = prompt("De quantos pontos será a partida?");
+	if (!i || isNaN(i) || i<=0){
+		alert("Digite uma pontuação vencedora válida.")
+		setPontuação();
+	}
+	else{
+		winningScore = i;
+	}
+}
+
+function reEditName(){
+	let i = window.confirm("Deseja renomear os jogadores?")
+	if (i){
+		p1=null;
+		p2=null;
+		while (!p1){
+			
+			p1=prompt("Nome do Jogador 1: ");
+			if(!p1){
+				alert("O nome não pode ser deixado em branco.");
+			}
+			for (let i=0; i < document.getElementsByClassName("p1").length; i++){
+				document.getElementsByClassName("p1")[i].innerHTML=p1;
+			}
+		}
+		
+		while (!p2){
+			p2=prompt("Nome do Jogador 2: ");
+			if(!p2){
+				alert("O nome não pode ser deixado em branco.");
+			}
+			for (let i=0; i < document.getElementsByClassName("p2").length; i++){
+				document.getElementsByClassName("p2")[i].innerHTML=p2;
+			}
+		}
+	document.getElementById("button2").innerHTML='<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Renomear Jogadores';
 	}
 }
