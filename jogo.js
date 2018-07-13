@@ -31,15 +31,10 @@ pauser = true;
 clearInterval(id);
 
 //atributos
-document.getElementById("button0").style.display="none";
-document.getElementById("button1").style.display="none";
-document.getElementById("button2").style.display="none";
-document.getElementById("button3").style.display="none";
-document.getElementById("button4").style.display="none";
-document.getElementById("button5").style.display="none";
+document.getElementById("botoes").style.display="none";
 document.getElementById("placar1").innerHTML=placarPlayer1+"<br>";
 document.getElementById("placar2").innerHTML=placarPlayer2;
-document.getElementById("button1").innerHTML="Virar Carta";
+document.getElementById("button1").innerHTML='<span class="glyphicon glyphicon-retweet" aria-hidden="true"></span> Virar Carta';
 document.getElementById("valorFalado1").innerHTML = '"Tá na hora do duelo!"';
 document.getElementById("valorFalado2").innerHTML = '"Fale até cansar..."';
 document.getElementById("yugi").src="./images/yugi.png";
@@ -58,7 +53,7 @@ document.getElementById("button7").innerHTML = "Player 2: "+p2;
 
 
 for (let i=0; i < document.getElementsByClassName("cartaImagem").length; i++){
-		document.getElementsByClassName("cartaImagem")[i].style.border = "40px solid pink";
+		document.getElementsByClassName("cartaImagem")[i].style.border = "40px solid rgba(165, 42, 42, 0.7)";
 		document.getElementsByClassName("cartaImagem")[i].style.padding = "0px";
 		document.getElementsByClassName("cartaImagem")[i].style.width="240";
 		document.getElementsByClassName("cartaImagem")[i].src="./images/cardBack.jpg";
@@ -89,16 +84,16 @@ function winner(i){
 				document.getElementById("cardPic1").style.border = "1px solid black";
 				document.getElementById("cardPic1").style.padding = "40px";
 				document.getElementById("yugi").src="./images/victory.webp";
-				document.getElementById("button1").innerHTML="Nova Partida";
+				document.getElementById("button1").innerHTML='<span class="glyphicon glyphicon-retweet" aria-hidden="true"></span> Nova Partida';
 				clearInterval(id);
 				setTimeout(function(){
 					alert("VITORIA DO JOGADOR "+p1+"!!!!!");
 				}, 200)
 			}
 			else{
-				document.getElementById("cardPic1").style.borderColor = "LightGreen";
-				document.getElementById("cardPic2").style.borderColor = "Red";
-				document.getElementById("button1").innerHTML="Reembaralhar";
+				document.getElementById("cardPic1").style.borderColor = "rgba(144, 238, 144, 0.7)";
+				document.getElementById("cardPic2").style.borderColor = "rgba(255, 0, 0, 0.7)";
+				document.getElementById("button1").innerHTML='<span class="glyphicon glyphicon-retweet" aria-hidden="true"></span> Reembaralhar';
 				document.getElementById("yugi").src="./images/winner"+(Math.floor(Math.random()*10)+1)+".webp";
 				flipper = true;
 				setTimeout(function(){
@@ -118,16 +113,16 @@ function winner(i){
 				document.getElementById("cardPic2").style.border = "1px solid black";
 				document.getElementById("cardPic2").style.padding = "40px";
 				document.getElementById("kaiba").src="./images/victory.webp";
-				document.getElementById("button1").innerHTML="Nova Partida";
+				document.getElementById("button1").innerHTML='<span class="glyphicon glyphicon-retweet" aria-hidden="true"></span> Nova Partida';
 				clearInterval(id);
 				setTimeout(function(){
 					alert("VITORIA DO JOGADOR "+p2+"!!!!!");
 				}, 200)
 			}
 			else {
-				document.getElementById("cardPic2").style.borderColor = "LightGreen";
-				document.getElementById("cardPic1").style.borderColor = "Red";
-				document.getElementById("button1").innerHTML="Reembaralhar";
+				document.getElementById("cardPic2").style.borderColor = "rgba(144, 238, 144, 0.7)";
+				document.getElementById("cardPic1").style.borderColor = "rgba(255, 0, 0, 0.7)";
+				document.getElementById("button1").innerHTML='<span class="glyphicon glyphicon-retweet" aria-hidden="true"></span> Reembaralhar';
 				document.getElementById("kaiba").src="./images/winner"+(Math.floor(Math.random()*10)+1)+".webp";
 				flipper = false;
 				setTimeout(function(){
@@ -176,7 +171,7 @@ function cardTurnOver() {
 		}else if (cardCount===52){
 			document.getElementById("cardPic1").src="./images/giphy.webp";
 			document.getElementById("cardPic2").src="./images/giphy.webp";
-			document.getElementById("button1").innerHTML="Reembaralhar";
+			document.getElementById("button1").innerHTML='<span class="glyphicon glyphicon-retweet" aria-hidden="true"></span> Reembaralhar';
 			cardCount++;
 		}else if (cardCount===53){
 			defaultValues();
@@ -494,7 +489,7 @@ function editName(){
 		document.getElementsByClassName("p2")[i].innerHTML=p2;
 	}
 	
-	document.getElementById("button2").innerHTML="Renomear Jogadores";
+	document.getElementById("button2").innerHTML='<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Renomear Jogadores';
 }
 
 function defaultValues(){
@@ -508,9 +503,9 @@ function defaultValues(){
 	document.getElementById("cardPic2").src="./images/cardBack.jpg";
 	document.getElementById("cardPic2").width="240";
 	cardCount=0;
-	document.getElementById("button1").innerHTML="Virar Carta";
-	document.getElementById("cardPic1").style.borderColor = "pink";
-	document.getElementById("cardPic2").style.borderColor = "pink";
+	document.getElementById("button1").innerHTML='<span class="glyphicon glyphicon-retweet" aria-hidden="true"></span> Virar Carta';
+	document.getElementById("cardPic1").style.borderColor = "rgba(165, 42, 42, 0.7)";
+	document.getElementById("cardPic2").style.borderColor = "rgba(165, 42, 42, 0.7)";
 	document.getElementById("valorFalado1").innerHTML = '"Tá na hora do duelo!"';
 	document.getElementById("valorFalado2").innerHTML = '"Fale até cansar..."';
 	document.getElementById("yugi").src="./images/yugi.png";
@@ -532,6 +527,7 @@ function setPontuação(){
 }
 
 function newMatch(){
+	pausar();
 	let i = window.confirm("Deseja iniciar uma nova partida?");
 	if(i){
 		placarPlayer1=0;
@@ -551,11 +547,11 @@ function pausar(){
 	if (pauser){
 		clearInterval(id);
 		document.getElementById("button4").style.display="none";
-		document.getElementById("button5").innerHTML='<span class="glyphicon glyphicon-play" aria-hidden="true"></span>Auto';
-		document.getElementById("button1").disabled = false; //enable
+		document.getElementById("button5").innerHTML='<span class="glyphicon glyphicon-play" aria-hidden="true"></span> Auto';
+		document.getElementById("button1").disabled = false;
 		pauser = false;
 	}else{
-		document.getElementById("button5").innerHTML='<span class="glyphicon glyphicon-pause" aria-hidden="true"></span>Pause';
+		document.getElementById("button5").innerHTML='<span class="glyphicon glyphicon-pause" aria-hidden="true"></span> Pause';
 		auto();
 		pauser = true;
 	}

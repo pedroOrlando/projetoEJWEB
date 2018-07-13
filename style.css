@@ -18,8 +18,8 @@ div{
 /*Imagem das cartas*/
 .cartaImagem{
 	height: 360px;
-	width: 240px;
-	border: 40px solid pink;
+	width: 275px;
+	border: 40px solid rgba(165, 42, 42, 0.7);
 }
  
  /*Imagem dos avatares*/
@@ -38,23 +38,12 @@ div{
 
 .valorFalado{
 	//position:relative;
-	border: 2px solid Blue;
+	border: 2px solid MidnightBlue;
 	border-radius: 10px;
 	padding: 10px;
-	background-color: white;
+	background-color: rgba(255, 255, 255, 0.9);
 }
 
-/*Valor falado pelo jogador 1*/
-#valorFalado1{
-	bottom: 400px;
-	left: 400px;
-}
-
-/*Valor falado pelo jogador 2*/
-#valorFalado2{
-	bottom: 400px;
-	left: 600px;
-}
 
  
 /*Avatar jogador 1*/
@@ -90,13 +79,12 @@ div{
 
 /*Nome jogador 1*/
 #jogador1{
-	left:80px;
+	color: white;
 }
 
 /*Nome jogador 2*/
 #jogador2{
-	left:1000px;
-	bottom: 60px
+	color: white;
 }
 
 /*Imagem da carta 2*/
@@ -110,11 +98,15 @@ div{
 
 /*Placar*/
 #placar{
-	border: 5px solid;
+	border: 3px solid rgb(25, 25, 112);
 	padding-left: 10px;
+	margin-top: 5px;
 	//position: relative;
 	bottom: 80px;
+	color: 	#000000;
+	background-color: rgba(255, 255, 255, 0.85);
 }
+
 
 #botoes{
 	padding:30px;
